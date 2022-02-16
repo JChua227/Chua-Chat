@@ -1,0 +1,11 @@
+form{
+    text-align:center;
+}
+
+.username,.password{
+    padding-bottom: 20px;
+}
+
+label{
+    color:rgba(134, 142, 180, 0.753);
+}
