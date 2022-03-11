@@ -1,0 +1,23 @@
+.page-name,.room-search-box {
+  text-align: center;
+}
+
+.title-page{
+    color: rgb(155, 154, 154);
+}
+
+.search-room {
+    padding-top: 200px;
+}
+
+.search-box{
+    height: 25px;
+}
+
+.room-search-box,.search-button{
+    padding-top: 20px;
+}
+
+.horizontal-line{
+    color: grey;
+}

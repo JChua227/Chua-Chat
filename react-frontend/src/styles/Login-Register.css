@@ -1,0 +1,20 @@
+form,.page-title,.already-have-account,.redirect-login,.register-new-account,.redirect-register{
+    text-align:center;
+    margin: auto;
+}
+
+.username,.password,.confirm-password{
+    padding-bottom: 50px;
+}
+
+.username,.page-title,.have-account,.register-account{
+    padding-top: 60px;
+}
+
+.page-title,.already-have-account,.register-account{
+    color: grey;
+}
+
+label{
+    color:rgba(134, 142, 180, 0.753);
+}

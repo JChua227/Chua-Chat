@@ -1,0 +1,17 @@
+.register-link,.login-link{
+    color: black;
+}
+
+.home{
+    text-align: center;
+    padding-top: 250px;
+}
+
+.register-button,.login-button{
+    display: inline-block;
+    width: 20%;
+}
+
+.app-name{
+    color: rgb(145, 143, 143);
+}
