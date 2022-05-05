@@ -14,3 +14,11 @@ video {
   max-height: 200px;
 }
 
+.user-video{
+  padding-top: 50px;
+  padding-bottom: 25px;
+}
+
+.remote-video-user{
+  padding: 25px;
+}
