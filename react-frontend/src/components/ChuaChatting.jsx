@@ -1,6 +1,7 @@
+import "../styles/ChuaChatting.css";
 import { useContext } from "react";
 import { Room } from "../contexts/Room";
-const { connect } = require("twilio-video");
+const { connect, isSupported, createLocalTracks } = require("twilio-video");
 
 const ChuaChatting = () => {
   const { room } = useContext(Room);
@@ -9,12 +10,11 @@ const ChuaChatting = () => {
     connect(room.jwt, {
       audio: true,
       name: room.roomName,
-      video: { width: 640 },
+      video: { width: 640, height: 400 },
     }).then((room) => {
       console.log(`Connected to Room: ${room.name}`);
+
       room.participants.forEach(participantConnected);
-      
-      console.log("this is room: " + JSON.stringify(room.participants));
       room.on("participantConnected", participantConnected);
 
       room.on("participantDisconnected", participantDisconnected);
@@ -25,12 +25,11 @@ const ChuaChatting = () => {
   };
 
   const participantConnected = (participant) => {
-
     const div = document.createElement("div");
-    
-    div.id = participant.sid;
-    div.innerText = participant.identity;
 
+    div.id = participant.sid;
+    /* div.innerHTML = participant.identity; */
+    console.log("participant is trying to connect");
     participant.on("trackSubscribed", (track) => trackSubscribed(div, track));
     participant.on("trackUnsubscribed", trackUnsubscribed);
 
@@ -40,7 +39,7 @@ const ChuaChatting = () => {
       }
     });
 
-    document.getElementById("myList").appendChild(div);
+    document.getElementById("participant-list").appendChild(div);
   };
 
   const participantDisconnected = (participant) => {
@@ -56,14 +55,27 @@ const ChuaChatting = () => {
     track.detach().forEach((element) => element.remove());
   };
 
-  joinRoom();
+  const userJoin = async () => {
+    const tracks = await createLocalTracks();
+    const localVideoTrack = tracks.find((track) => track.kind === "video");
+    const divContainer = document.getElementById("local-media");
+    if (!divContainer.firstChild) {
+      divContainer.appendChild(localVideoTrack.attach());
+    }
+  };
+
+  if (isSupported) {
+    userJoin();
+    joinRoom();
+  } else {
+    console.error("This browser is not supported by twilio-video.js");
+  }
 
   return (
     <div>
       <div className="videos">
-        <div id="myList">
-          
-        </div>
+        <div className="user-video" id="local-media"></div>
+        <div className="remote-video-user" id="participant-list"></div>
       </div>
     </div>
   );

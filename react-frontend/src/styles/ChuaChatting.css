@@ -1,0 +1,16 @@
+.videos {
+  text-align: center;
+}
+
+/* .remote-video-user {
+  text-align: center;
+  border-width: 2px;
+  border-color: red;
+  border-style: dashed;
+} */
+
+video {
+  max-width: 640px;
+  max-height: 200px;
+}
+
