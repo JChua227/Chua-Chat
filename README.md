@@ -34,7 +34,7 @@ Create a ".env" file containing
    
 ### Run command to start the Express app
 
-`yarn start node server.js`
+`nodemon index.js`
 
 ---
 
