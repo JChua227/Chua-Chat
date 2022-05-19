@@ -27,7 +27,6 @@
 Create a ".env" file containing
    - accountSid (secure id from twilio)
    - authToken (authorization token from twilio)
-   - fromNumber (your twilio number)
    - dbPassword (your mysql password)
    - TWILIO_API_KEY (your twilio generated api key)
    - TWILIO_API_SECRET (your twilio generated api secret)
@@ -35,6 +34,8 @@ Create a ".env" file containing
 ### Run command to start the Express app
 
 `nodemon index.js`
+or
+`node index.js`
 
 ---
 
